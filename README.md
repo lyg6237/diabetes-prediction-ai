@@ -1,278 +1,134 @@
-#### \# 🩺 Diabetes Prediction AI
+# 🩸 Diabetes Prediction AI Project
 
+> Machine Learning-based Diabetes Prediction using Health Data
 
+---
 
-\## 📌 프로젝트 소개
+## 📌 Overview
 
+This project aims to predict diabetes using machine learning models based on patient health data.
+By analyzing various health indicators such as glucose, BMI, blood pressure, and age, the model classifies whether a patient has diabetes or not.
 
+---
 
-본 프로젝트는 환자의 건강 지표 데이터를 기반으로 당뇨병 여부를 예측하는 머신러닝 분류 모델을 개발하는 것을 목표로 한다.
+## 🎯 Project Goals
 
-의료 데이터 분석을 통해 질병을 조기에 예측하고 예방 가능성을 높이는 데 목적이 있다.
+* Analyze diabetes-related health data
+* Perform data preprocessing and scaling
+* Train machine learning classification models
+* Compare model performance
+* Interpret prediction results
 
+---
 
+## 🛠 Tech Stack
 
-\---------------------------------------------------------------------------------------------
+| Category             | Technologies                   |
+| ---------------------| ----------------------------- |
+| Language             | Python                          |
+| Data Analysis        | Pandas, NumPy               |
+| Visualization         | Matplotlib, Seaborn          |
+| Machine Learning  | Scikit-learn                     |
+| Environment         | Jupyter Notebook, Docker |
+| Version Control     | GitHub                           |
 
+---
 
+## 📊 Dataset
 
-\## 📊 데이터셋
+### Pima Indians Diabetes Dataset
 
+* Total Samples: 768
+* Features: Glucose, BMI, BloodPressure, Insulin, Age, etc.
+* Target: Diabetes Outcome (0 / 1)
 
+| Feature           | Description              |
+| ----------------- | ----------------------- |
+| Glucose           | Blood glucose Level  |
+| BloodPressure   | Blood pressure        |
+| BMI                | Body Mass Index      |
+| Insulin             | Insulin level            |
+| Age                | Age                       |
+| Outcome         | Diabetes 여부          |
 
-\* Pima Indians Diabetes Dataset 사용
+---
 
-\* 총 768개의 데이터, 8개의 입력 변수 + 1개의 결과 변수
+## 🧹 Data Preprocessing
 
+* Checked missing values
+* Split feature / target data
+* Applied train/test split (8:2)
+* Used StandardScaler
+* Replaced invalid 0 values with median values
 
+### Processed Columns
 
-\### 주요 변수 설명
+* Glucose
+* BloodPressure
+* SkinThickness
+* Insulin
+* BMI
 
+---
 
+## 🤖 Machine Learning Models
 
-| 변수명
+| Model                   | Accuracy |
+| ---------------------- | ---------- |
+| Logistic Regression  | 0.708      |
+| Random Forest       | 0.779      |
 
-| ------------------------------------------------
+> Random Forest showed better performance than Logistic Regression.
 
-| Pregnancies(임신 횟수)
+---
 
-| Glucose(혈당 수치)
+## 🏆 Best Model
 
-| BloodPressure(혈압)
+### Random Forest
 
-| SkinThickness(피부 두께)
+### Reason
 
-| Insulin(인슐린 수치)
+* Higher Accuracy
+* Strong performance on non-linear data
+* Better feature relationship learning
 
-| BMI(체질량지수)
+---
 
-| DiabetesPedigreeFunction(유전적 영향)
+## 📌 Confusion Matrix
 
-| Age(나이)
+```text
+[[88 12]
+ [22 32]]
+```
 
-| Outcome(당뇨병 여부 (0: 정상, 1: 당뇨))
+| Actual / Predicted | 0 (Normal) | 1 (Diabetes) |
+| -------------------- | ------------ | ------------- |
+| 0 (Normal)           | 88            | 12             |
+| 1 (Diabetes)         | 22            | 32             |
+ 
+### Interpretation
 
+* Correctly predicted most normal patients
+* Correctly identified diabetic patients
+* Some diabetic patients were incorrectly predicted as normal
 
+> In medical AI, reducing False Negative cases is very important.
 
-\---------------------------------------------------------------------------------------------
+---
 
+## 📈 Key Insights
 
+* Glucose and BMI were important features
+* Random Forest achieved the best performance
+* Recall is important in medical prediction tasks
+* Data preprocessing significantly affects model performance
 
-\## ⚙️ 사용 기술
+---
 
+## 🚀 Conclusion
 
+This project implemented a machine learning-based diabetes prediction model using health-related data.
+Among the tested models, Random Forest achieved the best performance.
+The project also demonstrated the importance of preprocessing and evaluation metrics in medical AI systems.
 
-\* Python
-
-\* Pandas / NumPy
-
-\* Matplotlib / Seaborn
-
-\* Scikit-learn
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 🔄 프로젝트 진행 과정
-
-
-
-\### 1. 데이터 전처리
-
-
-
-\* 결측치 확인 (`isnull`)
-
-\* 의미 없는 0값 처리 (Glucose, BMI 등 → 중앙값 대체)
-
-\* 데이터 분포 확인 (countplot)
-
-
-
-\### 2. 데이터 분리
-
-
-
-\* Train / Test 데이터 분할 (8:2)
-
-\* Stratify 적용으로 클래스 불균형 유지
-
-
-
-\### 3. 데이터 스케일링
-
-
-
-\* StandardScaler 사용
-
-
-
-\### 4. 모델 학습
-
-
-
-\* Logistic Regression
-
-\* Random Forest
-
-
-
-\### 5. 성능 평가
-
-
-
-\* Accuracy 비교
-
-\* Confusion Matrix 분석
-
-\* Classification Report 확인
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 📈 모델 성능 비교
-
-
-
-| Model               | Accuracy   |
-
-| ------------------- | ---------- |
-
-| Logistic Regression | 0.70 |
-
-| Random Forest       | 0.77 |
-
-
-
-👉 최종 모델: Random Forest
-
-(더 높은 정확도를 보였기 때문)
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 🔍 혼동 행렬 분석
-
-
-
-\* True Positive: 실제 당뇨 → 당뇨로 예측
-
-\* True Negative: 정상 → 정상으로 예측
-
-\* False Positive: 정상 → 당뇨로 오진
-
-\* False Negative: 당뇨 → 정상으로 예측 (위험)
-
-
-
-👉 의료 데이터에서는 False Negative 최소화가 중요
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 🧠 주요 인사이트
-
-
-
-\* 혈당(Glucose), BMI, 나이가 당뇨병 예측에 중요한 변수로 작용
-
-\* Random Forest가 비선형 관계를 더 잘 학습함
-
-\* 단순 Accuracy보다 Recall / F1-score가 중요함
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 💾 모델 저장
-
-
-
-\* Random Forest 모델 저장 (`.pkl`)
-
-\* StandardScaler 함께 저장
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 🚀 프로젝트 결과 및 결론
-
-
-
-본 프로젝트에서는 건강 데이터를 기반으로 당뇨병 여부를 예측하는 머신러닝 모델을 구현하였다.
-
-모델 비교 결과 Random Forest가 더 우수한 성능을 보였으며, 의료 데이터에서는 단순 정확도뿐만 아니라 Recall과 F1-score 같은 지표도 중요하다는 점을 확인하였다.
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 💡 향후 개선 방향
-
-
-
-\* 더 다양한 데이터셋 적용 (병원 실제 데이터)
-
-\* 딥러닝 모델 (DNN) 적용
-
-\* 웹 서비스로 확장 (Flask / FastAPI)
-
-\* 실시간 예측 시스템 구축
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## 🔗 프로젝트 구조
-
-
-
-diabetes-prediction-ai/
-
-├── data/
-
-├── notebook/
-
-├── model/
-
-├── README.md
-
-└── requirements.txt
-
-
-
-\---------------------------------------------------------------------------------------------
-
-
-
-\## ✨ 느낀 점
-
-
-
-의료 AI 프로젝트를 진행하면서 단순한 모델 성능보다 실제 환자를 놓치지 않는 것이 더 중요하다는 점을 배울 수 있었다.
-
-데이터 전처리의 중요성과 머신러닝 모델 선택에 따른 성능 차이를 직접 경험할 수 있었다.
-
-
-
+---
